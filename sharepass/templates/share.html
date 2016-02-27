@@ -1,0 +1,7 @@
+{% extends "layout.html" %}
+{% block body %}
+    <div class="center-content error">
+        <p>{{ message }}</p>
+        <h5>{{ url_for('password', _external=True, hash=password.hash) }}</h5>
+    </div>
+{% endblock %}

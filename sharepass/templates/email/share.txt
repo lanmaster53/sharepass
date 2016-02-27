@@ -1,0 +1,14 @@
+Click the following link to access your shared password.
+{% if password.comment %}
+Sharer's comments:
+
+{{ password.comment }}
+{% endif %}
+
+{{ url_for('password', _external=True, hash=password.hash) }}
+
+This is a one-time use link. Once opened, the resulting data will be permanently removed from our servers.
+
+Regards,
+
+The SharePass Team

@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block body %}
+    <br><br>
+    <div class="row">
+        <div class="six columns offset-by-three">
+            <label for="email">recipient email</label>
+            <input class="u-full-width" name="email" id="email" type="text" />
+            <label for="password">password</label>
+            <input class="u-full-width" name="password" id="password" type="text" />
+            <label for="comment">comment</label>
+            <input class="u-full-width" name="comment" id="comment" type="text" />
+            <label>
+                <input type="checkbox" id="send" />
+                <span>send to recipient (less secure)</span>
+            </label>
+            <input class="u-full-width" type="button" value="encrypt" onclick="encrypt();" />
+        </div>
+    </div>
+    <script>
+function encrypt() {
+    var form = document.createElement("form");
+    form.setAttribute("method", "post");
+    form.setAttribute("action", "{{ url_for('share') }}");
+    var key = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    var cipher = CryptoJS.AES.encrypt(password, key);
+    var comment = document.getElementById("comment").value;
+    var params = {cipher: cipher, comment: comment};
+    if (document.getElementById("send").checked === true) {
+        params.email = key;
+    }
+    for(var key in params) {
+        if(params.hasOwnProperty(key)) {
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", key);
+            hiddenField.setAttribute("value", params[key]);
+            form.appendChild(hiddenField);
+        }
+    }
+    document.body.appendChild(form);
+    form.submit();
+}
+    </script>
+{% endblock %}

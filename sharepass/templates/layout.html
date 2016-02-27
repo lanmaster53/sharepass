@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>SharePass</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='common.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='normalize.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='skeleton.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='sharepass.css') }}">
+</head>
+<body>
+    <div id="flash" class="flash center-content rounded shaded">{{ get_flashed_messages()|join(', ') }}</div>
+    <div class="about"><a href="{{ url_for('about') }}">?</a></div>
+    <div class="nav center-content">
+        <div class="brand">
+            <a href="{{ url_for('index') }}"><span class="black">Share</span><b>Pass</b></a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="content">
+            {% block body %}{% endblock %}
+        </div>
+    </div>
+</body>
+</html>

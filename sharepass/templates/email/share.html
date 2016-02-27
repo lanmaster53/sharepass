@@ -1,0 +1,9 @@
+<p>Click the following link to access your shared password.</p>
+{% if password.comment %}
+<p>Sharer's comments:</p>
+<p>{{ password.comment }}</p>
+{% endif %}
+<p><a href="{{ url_for('password', _external=True, hash=password.hash) }}">{{ url_for('password', _external=True, hash=password.hash) }}</a></p>
+<p>This is a one-time use link. Once opened, the resulting data will be permanently removed from our servers.</p>
+<p>Regards,</p>
+<p>The SharePass Team</p>

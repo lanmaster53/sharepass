@@ -1,0 +1,6 @@
+.DS_Store
+*.bak
+*.pyc
+*.db
+*sublime*
+venv/

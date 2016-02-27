@@ -1,0 +1,128 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600);
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+button, input[type="submit"], input[type="reset"], input[type="button"] {
+    padding: 0 1rem;
+}
+
+form, table {
+    margin-bottom: 0;
+}
+
+pre {
+    white-space: pre-wrap;       /* CSS 3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    padding: 0;
+    margin: 0;
+}
+
+.flash {
+    position: absolute;
+    display: inline-block;
+    z-index: 100;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 1rem;
+    font-size: 1.5rem;
+    visibility: hidden;
+    background-color: red;
+    color: white;
+    border: 1px solid black;
+}
+
+.about {
+    position: absolute;
+    z-index: 99;
+    top: 1rem;
+    right: 2rem;
+}
+
+.about a {
+    text-decoration: inherit;
+    font-size: 2rem;
+    font-weight: bolder;
+    color: red;
+}
+
+.container {
+    max-width: 1000px;
+}
+
+.nav {
+    display: table;
+    color: red;
+    width: 100%;
+    padding: .5rem 0;
+    text-align: right;
+}
+
+.nav .brand {
+    float: left;
+    font-size: 3rem;
+    margin-left: 2rem;
+}
+
+.nav a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.content {}
+
+.comment {
+    border: 1px solid #e1e1e1;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.password {
+    font-size: 2rem;
+}
+
+.error {
+    margin-top: 10rem;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.center-content {
+    text-align: center;
+}
+
+.left-content {
+    text-align: left;
+}
+
+.right-content {
+    text-align: right;
+}
+
+.rounded {
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    border-radius: 1rem;
+}
+
+.shaded {
+    -webkit-box-shadow: .3rem .3rem .3rem #e1e1e1;
+    -moz-box-shadow: .3rem .3rem .3rem #e1e1e1;
+    box-shadow: .3rem .3rem .3rem #e1e1e1;
+}
+
+.black {
+    color: black;
+}
+
+.red {
+    color: red;
+}
