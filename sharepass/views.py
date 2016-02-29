@@ -5,7 +5,15 @@ from models import Password
 from utils import get_token, send_share
 from datetime import datetime
 
-# password validation
+@app.before_request
+def clean_db():
+    # remove any password beyond the configured TTL
+    for pw in Password.query.all():
+        delta = datetime.now() - pw.created
+        delta = delta.seconds + delta.days * 86400
+        if delta > app.config['PASSWORD_TTL']:
+            db.session.delete(pw)
+            db.session.commit()
 
 @app.route('/')
 @app.route('/index')
@@ -40,10 +48,7 @@ def password(hash):
         # remove the password on access
         db.session.delete(pw)
         db.session.commit()
-        delta = datetime.now() - pw.created
-        delta = delta.seconds + delta.days * 86400
-        if delta < app.config['PASSWORD_TTL']:
-            return render_template('password.html', password=pw)
+        return render_template('password.html', password=pw)
     abort(404)
 
 @app.route('/about')
