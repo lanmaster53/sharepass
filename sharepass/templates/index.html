@@ -17,29 +17,40 @@
         </div>
     </div>
     <script>
+function validateEmail(email) {
+    re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
 function encrypt() {
-    var form = document.createElement("form");
-    form.setAttribute("method", "post");
-    form.setAttribute("action", "{{ url_for('share') }}");
     var key = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
-    var cipher = CryptoJS.AES.encrypt(password, key);
-    var comment = document.getElementById("comment").value;
-    var params = {cipher: cipher, comment: comment};
-    if (document.getElementById("send").checked === true) {
-        params.email = key;
-    }
-    for(var key in params) {
-        if(params.hasOwnProperty(key)) {
-            var hiddenField = document.createElement("input");
-            hiddenField.setAttribute("type", "hidden");
-            hiddenField.setAttribute("name", key);
-            hiddenField.setAttribute("value", params[key]);
-            form.appendChild(hiddenField);
+    if (validateEmail(key)) {
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "{{ url_for('share') }}");
+        var key = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        var cipher = CryptoJS.AES.encrypt(password, key);
+        var comment = document.getElementById("comment").value;
+        var params = {cipher: cipher, comment: comment};
+        if (document.getElementById("send").checked === true) {
+            params.email = key;
         }
+        for(var key in params) {
+            if(params.hasOwnProperty(key)) {
+                var hiddenField = document.createElement("input");
+                hiddenField.setAttribute("type", "hidden");
+                hiddenField.setAttribute("name", key);
+                hiddenField.setAttribute("value", params[key]);
+                form.appendChild(hiddenField);
+            }
+        }
+        document.body.appendChild(form);
+        form.submit();
+    } else {
+        show_flash("Invalid email address.");
+        document.getElementById("email").style.borderColor = "red";
     }
-    document.body.appendChild(form);
-    form.submit();
 }
     </script>
 {% endblock %}
