@@ -1,6 +1,6 @@
 # SharePass
 
-SharePass is a safe way to quickly share passwords when traditional encryption methods are unavailable. SharePass is entirely browser-based, making it compatible with any device that supports JavaScript.
+SharePass is a safe(r) way to quickly share passwords when traditional encryption methods are unavailable. SharePass is entirely browser-based, making it compatible with any device that supports JavaScript.
 
 ## How It Works
 
